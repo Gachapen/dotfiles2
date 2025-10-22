@@ -190,7 +190,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "kitty wiremix"
     },
     "custom/media": {
         "format": "{icon} {text}",

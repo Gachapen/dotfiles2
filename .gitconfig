@@ -5,3 +5,12 @@
 	required = true
 [init]
 	defautBranch = main
+[user]
+	name = Magnus Bjerke Vik
+	email = post@magnusbv.no
+[alias]
+	ap = add -p
+	cm = commit -m
+	s = status
+	pl = pull --ff-only
+	ps = push
