@@ -14,3 +14,5 @@
 	s = status
 	pl = pull --ff-only
 	ps = push
+[push]
+	autoSetupRemote = true
