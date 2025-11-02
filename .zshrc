@@ -24,11 +24,25 @@ prompt walters
 ## ssh-agent
 ##
 
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+if [[ $(uname) == "Darwin" ]]; then
+	export GPG_TTY="$(tty)"
+	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	gpgconf --launch gpg-agent
+else
+	if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+	    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+	fi
+	if [ ! -f "$SSH_AUTH_SOCK" ]; then
+	    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+	fi
 fi
-if [ ! -f "$SSH_AUTH_SOCK" ]; then
-    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+
+if command -v fzf > /dev/null; then
+	source <(fzf --zsh)
+fi
+
+if command -v tmuxifier > /dev/null; then
+	eval "$(tmuxifier init -)"
 fi
 
 
@@ -79,7 +93,3 @@ if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
 	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
 	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
-
-# Third parties
-source <(fzf --zsh)
-
