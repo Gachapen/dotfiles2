@@ -2,8 +2,8 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-EDITOR=nvim
-BROWSER=firefox
+export EDITOR=nvim
+export BROWSER=firefox
 
 alias ll='ls -lh'
 alias h='hyprland'

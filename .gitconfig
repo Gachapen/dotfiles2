@@ -9,10 +9,15 @@
 	name = Magnus Bjerke Vik
 	email = post@magnusbv.no
 [alias]
-	ap = add -p
-	cm = commit -m
 	s = status
+	o = switch
+	d = diff
+	r = restore
+	ap = add -p
+	rp = restore -p
+	cm = commit -m
 	pl = pull --ff-only
 	ps = push
+	rbm = rebase -i origin/main
 [push]
 	autoSetupRemote = true
