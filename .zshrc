@@ -45,6 +45,10 @@ if command -v tmuxifier > /dev/null; then
 	eval "$(tmuxifier init -)"
 fi
 
+if command -v xdg-user-dir > /dev/null; then
+	source "$HOME/.config/user-dirs.dirs"
+fi
+
 
 ##
 ## Key bindings
