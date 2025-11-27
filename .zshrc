@@ -7,6 +7,7 @@ export BROWSER=firefox
 
 alias ll='ls -lh'
 alias h='hyprland'
+alias o='xdg-open'
 
 setopt autocd
 unsetopt beep
