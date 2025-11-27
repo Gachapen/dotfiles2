@@ -2,3 +2,5 @@
 [Default Applications]
 x-scheme-handler/discord-1317823272821461012=discord-1317823272821461012.desktop
 inode/directory=thunar.desktop
+image/jpeg=imv.desktop
+image/png=imv.desktop
