@@ -12,9 +12,10 @@
 	s = status
 	o = switch
 	d = diff
+	dc = diff --cached
 	r = restore
-	ap = add -p
 	rp = restore -p
+	ap = add -p
 	cm = commit -m
 	pl = pull --ff-only
 	ps = push

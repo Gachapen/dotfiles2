@@ -5,9 +5,16 @@ SAVEHIST=1000
 export EDITOR=nvim
 export BROWSER=firefox
 
-alias ll='ls -lh'
+alias ll='ls -alhF'
 alias h='hyprland'
 alias o='xdg-open'
+alias k='kubectl'
+
+alias dc='docker-compose'
+alias dcs='dc ps'
+alias dcu='dc up -d'
+alias dcd='dc down'
+alias dcl='dc logs -f --tail=50'
 
 setopt autocd
 unsetopt beep
@@ -50,6 +57,16 @@ if command -v xdg-user-dir > /dev/null; then
 	source "$HOME/.config/user-dirs.dirs"
 fi
 
+if [ -e /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
+fi
+
+if [ -e /opt/homebrew/opt/nvm/nvm.sh ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+fi
 
 ##
 ## Key bindings
