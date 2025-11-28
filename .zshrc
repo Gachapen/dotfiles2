@@ -120,7 +120,7 @@ fi
 ###
 ### Launch tmux
 
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+if [ $(command -v tmux) ] && [ -n "$GHOSTTY_BIN_DIR" ] && [ -z "$TMUX" ]; then
   tmux attach-session -t default || tmux new-session -s default
 fi
 
