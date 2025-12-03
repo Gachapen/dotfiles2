@@ -68,6 +68,13 @@ if [ -e /opt/homebrew/opt/nvm/nvm.sh ]; then
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 fi
 
+# fzf-zsh-plugin
+if [ -e "$HOME/.plugins/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh" ]; then
+  export PATH="$PATH:$HOME/.plugins/fzf-zsh-plugin/bin"
+  source "$HOME/.plugins/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh"
+  alias b='fzf-git-checkout'
+fi
+
 ##
 ## Key bindings
 ##
@@ -120,7 +127,7 @@ fi
 ###
 ### Launch tmux
 
-if [ $(command -v tmux) ] && [ -n "$GHOSTTY_BIN_DIR" ] && [ -z "$TMUX" ]; then
-  tmux attach-session -t default || tmux new-session -s default
-fi
+#if [ $(command -v tmux) ] && [ -n "$GHOSTTY_BIN_DIR" ] && [ -z "$TMUX" ]; then
+#  tmux attach-session -t default || tmux new-session -s default
+#fi
 

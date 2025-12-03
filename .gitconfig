@@ -14,11 +14,15 @@
 	d = diff
 	dc = diff --cached
 	r = restore
+  rs = restore --staged
 	rp = restore -p
 	ap = add -p
 	cm = commit -m
+  ca = commit --amend
 	pl = pull --ff-only
 	ps = push
+  psf = push --force-with-lease
 	rbm = rebase -i origin/main
+  rbc = rebase --continue
 [push]
 	autoSetupRemote = true
