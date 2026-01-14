@@ -23,9 +23,15 @@ zstyle :compinstall filename '/home/magnus/.zshrc'
 autoload -Uz compinit promptinit
 compinit
 
-promptinit
-fpath=("$HOME/.zprompts" "$fpath[@]")
-prompt walters
+echo "autocompletion loaded"
+
+if command -v starship > /dev/null; then
+  eval "$(starship init zsh)"
+else
+  promptinit
+  fpath=("$HOME/.zprompts" "$fpath[@]")
+  prompt walters
+fi
 
 
 ##
@@ -57,6 +63,10 @@ if command -v xdg-user-dir > /dev/null; then
 	source "$HOME/.config/user-dirs.dirs"
 fi
 
+if command -v uuidgen > /dev/null; then
+  alias uuid="uuidgen | tr -d '\n' | tr '[:upper:]' '[:lower:]' | pbcopy && echo 'uuid copied to clipboard'"
+fi
+
 if [ -e /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
   export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
@@ -73,6 +83,21 @@ if [ -e "$HOME/.plugins/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh" ]; then
   export PATH="$PATH:$HOME/.plugins/fzf-zsh-plugin/bin"
   source "$HOME/.plugins/fzf-zsh-plugin/fzf-zsh-plugin.plugin.zsh"
   alias b='fzf-git-checkout'
+fi
+
+export PATH="$HOME/.local/bin:$PATH"
+# Required by Claude Code
+
+# LM Studio
+lm_studio_path="/Users/magnus/.lmstudio/bin"
+if [ -e "$lm_studio_path" ]; then
+  export PATH="$PATH:$lm_studio_path"
+fi
+
+# Use node 24 by default
+node_path="/opt/homebrew/opt/node@24/bin"
+if [ -e "$node_path" ]; then
+  export PATH="$node_path:$PATH"
 fi
 
 ##
@@ -130,4 +155,3 @@ fi
 #if [ $(command -v tmux) ] && [ -n "$GHOSTTY_BIN_DIR" ] && [ -z "$TMUX" ]; then
 #  tmux attach-session -t default || tmux new-session -s default
 #fi
-
