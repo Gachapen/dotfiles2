@@ -26,3 +26,5 @@
   rbc = rebase --continue
 [push]
 	autoSetupRemote = true
+[pull]
+	rebase = true
