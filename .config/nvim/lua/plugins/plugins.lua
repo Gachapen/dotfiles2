@@ -18,6 +18,8 @@ return {
         "vim",
         "yaml",
         "rust",
+        "wgsl",
+        "wgsl_bevy",
       },
     },
   },
