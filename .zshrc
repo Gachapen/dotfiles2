@@ -6,7 +6,7 @@ export EDITOR=nvim
 export BROWSER=firefox
 
 alias ll='ls -alhF'
-alias h='hyprland'
+alias h='start-hyprland'
 alias o='xdg-open'
 alias k='kubectl'
 
