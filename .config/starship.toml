@@ -12,6 +12,9 @@ $line_break\
 $python\
 $character"""
 
+# This prevents Starship from adding the Zero Width Space, which causes issues with snacks.terminal in neovim
+add_newline = false
+
 [directory]
 style = "blue"
 
