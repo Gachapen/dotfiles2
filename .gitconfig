@@ -6,8 +6,7 @@
 [init]
 	defautBranch = main
 [user]
-	name = Magnus Bjerke Vik
-	email = post@magnusbv.no
+	signingkey = key::ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC++FwDl7gS5ys2cG6JQyKzhe6T/I+KZ/lWUneLvmmC961Gu/1sKA2V7l0WtgJf+++B3RD+Dfef1b71cgpJpZ9QmhksX9M/l0Npkgls/xmZLnNEkcj2BU5w69lDLkARcrUvIGdTUoLzKY+IwUYbpYMRLVvkZ+uuFf6iNZe+cyBJiqHiRhG4ZSo49RL3XltYAW7E//nxfJq4C2Iv/wdLYqEkhh37nABViQ39NQNnagEQMZSBvtxAK7LS0cs1rsPJzCj04ScrxSO0A3NkfNnYZypvQRyw8o/6Zt7hkX5st+W4BFzFqOJHWDVLTHP6KeTtc7QN3act4v0yrLNnhGITXfO5NSDl2/pCxDoI38KupUbd0WgDJ8FHfI7rh9uHq8moVPUQ19pZxXOn35aIIfK3viXZQwzokRvxZY2RhxTgmXiAlqhyufO5chD6te1e7lF5RPCXNMSOlx7KhdTPRSILmwLBwlNx9u4/my+2FyRiR5rGXcdwEaUzK+JKdHqfzR3lAE4DEK4buYTvvd03fqwJtglhUaZX84FwpY0ypJK7BWwaTgZzGAw9TDg0BcX8U00jX0P8THoIL0OQ/xlT8/gSXwKW33vT7N/Cvt6HhbtIxvhRoGU+wLgjb0U4xnZE16qBgkuUiIZ3bwACUa0d6xaTtSWdLFCTq6+JJyk8ZjCJWN3XtQ== cardno:18_287_654
 [alias]
 	s = status
 	o = switch
@@ -28,3 +27,11 @@
 	autoSetupRemote = true
 [pull]
 	rebase = true
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[tag]
+	gpgSign = true
+[include]
+	path = ~/.gitconfig-local
