@@ -7,3 +7,4 @@ application/octet-stream=libreoffice-writer.desktop
 
 [Added Associations]
 application/octet-stream=code-oss.desktop;libreoffice-writer.desktop;
+text/plain=nvim.desktop;
