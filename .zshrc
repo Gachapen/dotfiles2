@@ -23,8 +23,6 @@ zstyle :compinstall filename '/home/magnus/.zshrc'
 autoload -Uz compinit promptinit
 compinit
 
-echo "autocompletion loaded"
-
 if command -v starship > /dev/null; then
   eval "$(starship init zsh)"
 else
@@ -43,12 +41,16 @@ if [[ $(uname) == "Darwin" ]]; then
 	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 	gpgconf --launch gpg-agent
 else
-	if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-	    ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
-	fi
-	if [ ! -f "$SSH_AUTH_SOCK" ]; then
-	    source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
-	fi
+	export GPG_TTY=$(tty)
+	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	gpgconf --launch gpg-agent
+	gpg-connect-agent updatestartuptty /bye > /dev/null
+	# if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+	#     ssh-agent -t 1h > "$XDG_RUNTIME_DIR/ssh-agent.env"
+	# fi
+	# if [ ! -f "$SSH_AUTH_SOCK" ]; then
+	#     source "$XDG_RUNTIME_DIR/ssh-agent.env" >/dev/null
+	# fi
 fi
 
 if command -v fzf > /dev/null; then
