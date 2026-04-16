@@ -9,7 +9,6 @@ $git_state\
 $git_status\
 $cmd_duration\
 $line_break\
-$python\
 $character"""
 
 # This prevents Starship from adding the Zero Width Space, which causes issues with snacks.terminal in neovim
