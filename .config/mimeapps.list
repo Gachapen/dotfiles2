@@ -4,6 +4,7 @@ inode/directory=thunar.desktop
 image/jpeg=imv.desktop
 image/png=imv.desktop
 application/octet-stream=libreoffice-writer.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
 
 [Added Associations]
 application/octet-stream=code-oss.desktop;libreoffice-writer.desktop;
