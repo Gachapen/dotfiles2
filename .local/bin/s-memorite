@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+SESSION="memorite"
+DIR="$HOME/dev/memorite"
+
+tmux has-session -t "$SESSION" 2>/dev/null && exec tmux attach-session -t "$SESSION"
+
+tmux new-session -d -s "$SESSION" -c "$DIR" -n editor
+tmux send-keys -t "$SESSION:editor" "nvim ." Enter
+
+tmux new-window -t "$SESSION" -c "$DIR" -n terminal
+
+tmux new-window -t "$SESSION" -c "$DIR" -n claude
+tmux send-keys -t "$SESSION:claude" "claude" Enter
+
+tmux select-window -t "$SESSION:editor"
+tmux attach-session -t "$SESSION"
