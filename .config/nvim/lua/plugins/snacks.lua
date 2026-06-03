@@ -5,6 +5,10 @@ return {
       picker = {
         sources = {
           explorer = {
+            hidden = true,
+            ignored = true,
+            exclude = { "node_modules", ".git", "dist", "build", "*.lock" },
+
             -- 1. Use the 'file' field for sorting (filename)
             -- By removing 'dir' from this list, you stop prioritizing folders.
             sort = { fields = { "file" } },
@@ -13,6 +17,11 @@ return {
             matcher = {
               sort_empty = true, -- Apply sort even when not searching
             },
+          },
+          files = {
+            hidden = true,
+            ignored = true,
+            exclude = { "node_modules", ".git", "dist", "build", "*.lock" },
           },
         },
       },
