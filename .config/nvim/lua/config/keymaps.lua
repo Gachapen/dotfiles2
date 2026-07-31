@@ -4,7 +4,7 @@
 
 vim.keymap.set("n", "<leader>rr", function()
   -- 1. Open the terminal with auto_close disabled
-  local term = Snacks.terminal.open("cargo run", {
+  local term = Snacks.terminal.open("RUST_BACKTRACE=1 cargo run", {
     cwd = LazyVim.root(),
     auto_close = false,
   })
