@@ -10,6 +10,9 @@ return {
                 enable = false,
               },
             },
+            cargo = {
+              targetDir = "./analyzer",
+            },
           },
         },
       },

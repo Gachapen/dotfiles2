@@ -1,6 +1,12 @@
 HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
+HISTSIZE=50000
+SAVEHIST=50000
+
+setopt SHARE_HISTORY          # write each command right away and read other sessions' new ones
+setopt HIST_IGNORE_ALL_DUPS   # don't keep duplicate entries
+setopt HIST_IGNORE_SPACE      # leave out commands that start with a space
+setopt HIST_REDUCE_BLANKS     # tidy extra whitespace
+setopt EXTENDED_HISTORY       # save timestamps
 
 export EDITOR=nvim
 export BROWSER=firefox
@@ -20,6 +26,7 @@ setopt autocd
 unsetopt beep
 zstyle :compinstall filename '/home/magnus/.zshrc'
 
+eval "$(git gtr completion zsh)"
 autoload -Uz compinit promptinit
 compinit
 
@@ -35,6 +42,8 @@ fi
 ##
 ## ssh-agent
 ##
+
+#eval "$(ssh-agent -s)"
 
 if [[ $(uname) == "Darwin" ]]; then
 	export GPG_TTY="$(tty)"
@@ -100,6 +109,13 @@ fi
 node_path="/opt/homebrew/opt/node@24/bin"
 if [ -e "$node_path" ]; then
   export PATH="$node_path:$PATH"
+fi
+
+# When using brew, use the dotnet-sdk cask, not the dotnet formulae
+dotnet_sdk_path="/usr/local/share/dotnet"
+if [ -e "$dotnet_sdk_path" ]; then
+  export DOTNET_ROOT="$dotnet_sdk_path"
+  export PATH="$DOTNET_ROOT:$PATH"
 fi
 
 ##
