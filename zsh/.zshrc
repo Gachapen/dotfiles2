@@ -26,6 +26,11 @@ setopt autocd
 unsetopt beep
 zstyle :compinstall filename '/home/magnus/.zshrc'
 
+if [ -e /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
+fi
+
 eval "$(git gtr completion zsh)"
 autoload -Uz compinit promptinit
 compinit
@@ -64,11 +69,6 @@ fi
 
 if command -v uuidgen > /dev/null; then
   alias uuid="uuidgen | tr -d '\n' | tr '[:upper:]' '[:lower:]' | pbcopy && echo 'uuid copied to clipboard'"
-fi
-
-if [ -e /opt/homebrew/bin/brew ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-  export HOMEBREW_CASK_OPTS="--appdir=$HOME/Applications"
 fi
 
 if [ -e /opt/homebrew/opt/nvm/nvm.sh ]; then
